@@ -1,0 +1,2903 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2023 1:08:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-7VR17BB"
+  DTS:CreatorName="DESKTOP-7VR17BB\youss"
+  DTS:DTSID="{F67F566E-6FCB-4B9F-8657-2B16B4E3EAD2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{E1CE9D3F-E290-438E-AFFF-8245EA37F32E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4E8B0FA2-D9DF-4802-88AE-F3E1CA8C6CAC}"
+      DTS:ObjectName="DESKTOP-7VR17BB.Assignment">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-7VR17BB;Initial Catalog=Assignment;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{4E8B0FA2-D9DF-4802-88AE-F3E1CA8C6CAC}DESKTOP-7VR17BB.Assignment;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8D3E207A-B00A-44B0-92D8-5C8E4A07A38B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Add Dates and Active for Both"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Dates and Active for Both"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Add Dates and Active for Both.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Add Dates and Active for Both.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"12/31/9999"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"12/31/9999"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[Active]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[Active]"
+                      name="Active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Add Dates and Active for Both.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Add Dates and Active for City"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Dates and Active for City"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Add Dates and Active for City.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Add Dates and Active for City.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"12/31/9999"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"12/31/9999"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[Active]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[Active]"
+                      name="Active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Add Dates and Active for City.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Add Dates and Active for Email"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Dates and Active for Email"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Add Dates and Active for Email.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Add Dates and Active for Email.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"12/31/9999"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"12/31/9999"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[Active]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[Active]"
+                      name="Active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Add Dates and Active for Email.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Adjust Dates and Active"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Adjust Dates and Active"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Adjust Dates and Active.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Adjust Dates and Active.Inputs[Derived Column Input].Columns[Update_Date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Update_Date"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Update_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Adjust Dates and Active.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Update_Date]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Update_Date</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"12/31/9999"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"12/31/9999"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[Active]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[Active]"
+                      name="Active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Adjust Dates and Active.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Both Changed"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Both Changed"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+[DWH_EMPLOYEE_Q2_Type6]
+SET
+[Current_Email] = ?,
+[Current_City] = ?,
+[Active] = 0,
+[End_Date] = GETDATE()
+WHERE [ID] = ?;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Both Changed.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="250"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="250"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Email Changed"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Email Changed"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+[DWH_EMPLOYEE_Q2_Type6]
+SET
+[Current_Email] = ?,
+[Active] = 0,
+[End_Date] = GETDATE()
+WHERE [ID] = ?;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Email Changed.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="250"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Employee_Q2"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Employee_Q2"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[EMPLOYEE_Q2]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Employee_Q2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]"
+                      name="SRC_City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]"
+                      name="SRC_Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Update_Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[Update_Date]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Update_Date]"
+                      name="Update_Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="250"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].ExternalColumns[Update_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Update_Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[Update_Date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[Update_Date]"
+                      name="Update_Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Fields Updated?"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Fields Updated?"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input].Columns[Old_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_Email"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input].Columns[Old_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_City"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fields Updated?.Outputs[BothChanged]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="BothChanged"
+                  synchronousInputId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(#{Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]} != #{Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]}) &amp;&amp; (#{Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]} != #{Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(Old_City != SRC_City) &amp;&amp; (Old_Email != SRC_Email)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Fields Updated?.Outputs[CityChanged]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="CityChanged"
+                  synchronousInputId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]} != #{Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Old_City != SRC_City</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Fields Updated?.Outputs[EmailChanged]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="EmailChanged"
+                  synchronousInputId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]} != #{Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Old_Email != SRC_Email</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Fields Updated?.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Fields Updated?.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fields Updated?.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fields Updated?.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fields Updated?.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fields Updated?.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert New Rows"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert New Rows"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWH_EMPLOYEE_Q2_Type6]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert New Rows.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[End_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].Columns[Active]"
+                      cachedDataType="ui1"
+                      cachedName="Active"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      lineageId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output].Columns[Active]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[SK]"
+                      dataType="i4"
+                      name="SK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="ui1"
+                      name="Active" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert New Rows.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert New Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert New Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert New Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert Updated Both Rows"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Updated Both Rows"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWH_EMPLOYEE_Q2_Type6]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert Updated Both Rows.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[Old_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[Old_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[End_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].Columns[Active]"
+                      cachedDataType="ui1"
+                      cachedName="Active"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output].Columns[Active]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[SK]"
+                      dataType="i4"
+                      name="SK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="ui1"
+                      name="Active" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert Updated Both Rows.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Updated Both Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Updated Both Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Updated Both Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert Updated City Rows"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Updated City Rows"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWH_EMPLOYEE_Q2_Type6]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert Updated City Rows.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[Old_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[Old_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[End_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].Columns[Active]"
+                      cachedDataType="ui1"
+                      cachedName="Active"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output].Columns[Active]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[SK]"
+                      dataType="i4"
+                      name="SK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="ui1"
+                      name="Active" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert Updated City Rows.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Updated City Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Updated City Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Updated City Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert Updated Email Rows"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Updated Email Rows"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWH_EMPLOYEE_Q2_Type6]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert Updated Email Rows.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[SRC_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[Old_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[Old_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Old_Email"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[End_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].Columns[Active]"
+                      cachedDataType="ui1"
+                      cachedName="Active"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      lineageId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output].Columns[Active]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[SK]"
+                      dataType="i4"
+                      name="SK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Current_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Current_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_City]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Previous_Email]"
+                      dataType="wstr"
+                      length="250"
+                      name="Previous_Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="ui1"
+                      name="Active" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert Updated Email Rows.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Updated Email Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Updated Email Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Updated Email Rows.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup Rows In Target"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Rows In Target"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DWH_EMPLOYEE_Q2_Type6]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DWH_EMPLOYEE_Q2_Type6]) [refTable]
+where [refTable].[ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="250" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Current_City" dataType="DT_WSTR" length="250" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Current_Email" dataType="DT_WSTR" length="250" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Previous_City" dataType="DT_WSTR" length="250" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Previous_Email" dataType="DT_WSTR" length="250" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Start_Date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="End_Date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Active" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup Rows In Target.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup Rows In Target.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup Rows In Target.Inputs[Lookup Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup Rows In Target.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_Email]"
+                      name="Old_Email"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Current_Email</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output].Columns[Old_City]"
+                      name="Old_City"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Current_City</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup Rows In Target.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup Rows In Target.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Update City"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update City"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+[DWH_EMPLOYEE_Q2_Type6]
+SET
+[Current_City] = ?,
+[Active] = 0,
+[End_Date] = GETDATE()
+WHERE [ID] = ?;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Update City.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7VR17BB.Assignment]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input].Columns[SRC_City]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="SRC_City"
+                      externalMetadataColumnId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[SRC_City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output].Columns[ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="250"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[BothChanged]"
+              endId="Package\Data Flow Task\Both Changed.Inputs[OLE DB Command Input]"
+              name="BothChanged"
+              startId="Package\Data Flow Task\Fields Updated?.Outputs[BothChanged]" />
+            <path
+              refId="Package\Data Flow Task.Paths[CityChanged]"
+              endId="Package\Data Flow Task\Update City.Inputs[OLE DB Command Input]"
+              name="CityChanged"
+              startId="Package\Data Flow Task\Fields Updated?.Outputs[CityChanged]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Insert New Rows.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Adjust Dates and Active.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\Insert Updated City Rows.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Add Dates and Active for City.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\Insert Updated Email Rows.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Add Dates and Active for Email.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\Insert Updated Both Rows.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Add Dates and Active for Both.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[EmailChanged]"
+              endId="Package\Data Flow Task\Email Changed.Inputs[OLE DB Command Input]"
+              name="EmailChanged"
+              startId="Package\Data Flow Task\Fields Updated?.Outputs[EmailChanged]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\Fields Updated?.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\Adjust Dates and Active.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup Rows In Target.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Command Output]"
+              endId="Package\Data Flow Task\Add Dates and Active for City.Inputs[Derived Column Input]"
+              name="OLE DB Command Output"
+              startId="Package\Data Flow Task\Update City.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Command Output1]"
+              endId="Package\Data Flow Task\Add Dates and Active for Email.Inputs[Derived Column Input]"
+              name="OLE DB Command Output"
+              startId="Package\Data Flow Task\Email Changed.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Command Output2]"
+              endId="Package\Data Flow Task\Add Dates and Active for Both.Inputs[Derived Column Input]"
+              name="OLE DB Command Output"
+              startId="Package\Data Flow Task\Both Changed.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Lookup Rows In Target.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Employee_Q2.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="265,71" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Data Flow Task\Insert Updated City Rows"
+          TopLeft="233.333333333333,505.555555555556" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Data Flow Task\Insert Updated Email Rows"
+          TopLeft="454,505.333333333333" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Data Flow Task\Lookup Rows In Target"
+          TopLeft="198,144" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Data Flow Task\Add Dates and Active for Email"
+          TopLeft="430.666666666667,429.333333333333" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Both Changed"
+          TopLeft="637.333333333333,348.666666666667" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Data Flow Task\Employee_Q2"
+          TopLeft="214,63" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Data Flow Task\Fields Updated?"
+          TopLeft="436.222222222222,235.555555555556" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Data Flow Task\Add Dates and Active for City"
+          TopLeft="200,428.888888888889" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Data Flow Task\Update City"
+          TopLeft="254.888888888889,345" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Data Flow Task\Adjust Dates and Active"
+          TopLeft="15.1111111111111,255.444444444444" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Email Changed"
+          TopLeft="440.111111111111,348.444444444444" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Data Flow Task\Insert New Rows"
+          TopLeft="30.5,363.5" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Data Flow Task\Add Dates and Active for Both"
+          TopLeft="666.222222222222,429.777777777778" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Data Flow Task\Insert Updated Both Rows"
+          TopLeft="674,503.111111111111" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="291.25,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Command Output2]"
+          TopLeft="714.333333333333,390.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.888888888889,39.1111111111111"
+              Start="0,0"
+              End="64.888888888889,31.6111111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5555555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5555555555555"
+                    Point2="0,19.5555555555555"
+                    Point3="4,19.5555555555555" />
+                  <mssgle:LineSegment
+                    End="60.888888888889,19.5555555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.888888888889,19.5555555555555"
+                    Point2="64.888888888889,19.5555555555555"
+                    Point3="64.888888888889,23.5555555555555" />
+                  <mssgle:LineSegment
+                    End="64.888888888889,31.6111111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Command Output1]"
+          TopLeft="517.111111111111,390.444444444444">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.0555555555558,38.8888888888889"
+              Start="0,0"
+              End="29.0555555555558,31.3888888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4444444444444" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4444444444444"
+                    Point2="0,19.4444444444444"
+                    Point3="4,19.4444444444444" />
+                  <mssgle:LineSegment
+                    End="25.0555555555558,19.4444444444444" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.0555555555558,19.4444444444444"
+                    Point2="29.0555555555558,19.4444444444444"
+                    Point3="29.0555555555558,23.4444444444444" />
+                  <mssgle:LineSegment
+                    End="29.0555555555558,31.3888888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Command Output]"
+          TopLeft="322.888888888889,387">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.8888888888885,41.888888888889"
+              Start="0,0"
+              End="-11.8888888888885,34.388888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.9444444444445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.9444444444445"
+                    Point2="0,20.9444444444445"
+                    Point3="-4,20.9444444444445" />
+                  <mssgle:LineSegment
+                    End="-7.88888888888852,20.9444444444445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.88888888888852,20.9444444444445"
+                    Point2="-11.8888888888885,20.9444444444445"
+                    Point3="-11.8888888888885,24.9444444444445" />
+                  <mssgle:LineSegment
+                    End="-11.8888888888885,34.388888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="263.333333333333,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-150.222222222222,69.4444444444444"
+              Start="0,0"
+              End="-150.222222222222,61.9444444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1221303948576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1221303948576"
+                    Point2="0,28.1221303948576"
+                    Point3="-4,28.1221303948576" />
+                  <mssgle:LineSegment
+                    End="-146.222222222222,28.1221303948576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-146.222222222222,28.1221303948576"
+                    Point2="-150.222222222222,28.1221303948576"
+                    Point3="-150.222222222222,32.1221303948576" />
+                  <mssgle:LineSegment
+                    End="-150.222222222222,61.9444444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-130.917497829861,33.1221303948576,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="324.666666666667,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="191.055555555555,49.5555555555556"
+              Start="0,0"
+              End="191.055555555555,42.0555555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0679522497705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0679522497705"
+                    Point2="0,20.0679522497705"
+                    Point3="4,20.0679522497705" />
+                  <mssgle:LineSegment
+                    End="187.055555555555,20.0679522497705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="187.055555555555,20.0679522497705"
+                    Point2="191.055555555555,20.0679522497705"
+                    Point3="191.055555555555,24.0679522497705" />
+                  <mssgle:LineSegment
+                    End="191.055555555555,42.0555555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.3363910590277,25.0679522497705,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[EmailChanged]"
+          TopLeft="516.416666666667,277.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.8888888888888"
+              Start="0,0"
+              End="0,63.3888888888888">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.3888888888888" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-31.58798828125,25.8629014756944,63.1759765625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          TopLeft="778.361111111111,471.777777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.3333333333334"
+              Start="0,0"
+              End="0,23.8333333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8333333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="546.166666666667,471.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.8333333333333,34.0000000000001"
+              Start="0,0"
+              End="13.8333333333333,26.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0000000000001"
+                    Point2="0,17.0000000000001"
+                    Point3="4,17.0000000000001" />
+                  <mssgle:LineSegment
+                    End="9.83333333333326,17.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.83333333333326,17.0000000000001"
+                    Point2="13.8333333333333,17.0000000000001"
+                    Point3="13.8333333333333,21.0000000000001" />
+                  <mssgle:LineSegment
+                    End="13.8333333333333,26.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="311,470.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.833333333333,34.6666666666666"
+              Start="0,0"
+              End="23.833333333333,27.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3333333333333"
+                    Point2="0,17.3333333333333"
+                    Point3="4,17.3333333333333" />
+                  <mssgle:LineSegment
+                    End="19.833333333333,17.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.833333333333,17.3333333333333"
+                    Point2="23.833333333333,17.3333333333333"
+                    Point3="23.833333333333,21.3333333333333" />
+                  <mssgle:LineSegment
+                    End="23.833333333333,27.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="112.305555555556,297.444444444444">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.0555555555556"
+              Start="0,0"
+              End="0,58.5555555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5555555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[CityChanged]"
+          TopLeft="477.972222222222,277.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-155.083333333333,67.4444444444443"
+              Start="0,0"
+              End="-155.083333333333,59.9444444444443">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.22313860252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.22313860252"
+                    Point2="0,23.22313860252"
+                    Point3="-4,23.22313860252" />
+                  <mssgle:LineSegment
+                    End="-151.083333333333,23.22313860252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-151.083333333333,23.22313860252"
+                    Point2="-155.083333333333,23.22313860252"
+                    Point3="-155.083333333333,27.22313860252" />
+                  <mssgle:LineSegment
+                    End="-155.083333333333,59.9444444444443" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-105.727174479167,28.22313860252,56.371015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[BothChanged]"
+          TopLeft="553.472222222222,277.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="160.861111111111,71.111111111111"
+              Start="0,0"
+              End="160.861111111111,63.611111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4856815578465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.4856815578465"
+                    Point2="0,24.4856815578465"
+                    Point3="4,24.4856815578465" />
+                  <mssgle:LineSegment
+                    End="156.861111111111,24.4856815578465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="156.861111111111,24.4856815578465"
+                    Point2="160.861111111111,24.4856815578465"
+                    Point3="160.861111111111,28.4856815578465" />
+                  <mssgle:LineSegment
+                    End="160.861111111111,63.611111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="50.6425672743056,29.4856815578465,59.5759765625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert Updated City Rows">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert Updated Email Rows">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup Rows In Target">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DWH_EMPLOYEE_Q2_Type6]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Employee_Q2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert New Rows">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert Updated Both Rows">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
